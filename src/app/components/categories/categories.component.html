@@ -1,0 +1,11 @@
+
+<ul *ngFor="let cat of categories" class="ulClass">
+
+  <li>
+      <a [routerLink]="['/detail',cat.id]" class="{{shouldAddHighlightedClass(cat)}}">
+         {{cat.name}}
+      </a>
+
+  </li>
+
+</ul>

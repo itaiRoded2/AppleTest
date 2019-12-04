@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <span *ngIf="shouldShowAddTaskBtn" (click)="showNewTaskForm()" class="curserMe">(+) New Task</span>
+
+  <div *ngIf="shouldShowNewTaskForm">
+  
+    <span>Task title</span> <br/>
+    <input #taskTitle type="text">
+    <input type="button" (click)="addNewTask(taskTitle.value)" value="Submit"/>
+  </div>
+
+</div>

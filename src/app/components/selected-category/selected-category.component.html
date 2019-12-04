@@ -1,0 +1,42 @@
+<div style="width:600px;">
+
+  <h3>{{selectedCatName}}</h3>
+
+  <table style="width:100%">
+
+    <tr>
+      <th style="width:10%"></th>
+      <th style="width:80%"></th>
+      <th style="width:10%"></th>
+    </tr>
+
+    <div *ngFor="let childCat of children">
+
+      <div class="wrappingDivForRow">
+
+        <tr>
+
+          <td>
+            <input type="checkbox" (click)="toggleChildCat(childCat)" [checked]="isChecked(childCat)"
+              class="curserMe" />
+          </td>
+
+          <td>
+            <span class="{{checkedIfCrossed(childCat)}}">
+              <span>{{childCat.title}} </span>
+            </span>
+          </td>
+
+          <td>
+            <span (click)="deleteChildCat(childCat)" class="curserMe delete">X</span>
+          </td>
+
+        </tr>
+
+      </div>
+
+    </div>
+
+  </table>
+
+</div>

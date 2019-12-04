@@ -1,0 +1,20 @@
+.shouldBeCrossed {
+    text-decoration: line-through;
+}
+
+.curserMe {
+    cursor: pointer;
+}
+
+.wrappingDivForRow{
+    width: 600px;
+}
+
+.delete{
+    float: right; 
+    color: red;
+}
+
+/* table, th, td {
+    border: 1px solid black;
+  } */

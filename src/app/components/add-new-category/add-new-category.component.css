@@ -1,0 +1,13 @@
+.curserMe {
+    cursor: pointer;
+}
+
+.wrapper{
+    /* float: right;
+    margin-top: 160%;
+    margin-right: 10px; */
+
+    position:absolute;
+    bottom:0;
+    right:0;
+} 
