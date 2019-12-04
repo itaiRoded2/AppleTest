@@ -1,13 +1,10 @@
 .highlightMe {
-    color:  red;
-    background-color: #ffa;
-    border: 1px solid;
-    padding: 3px;
+  color: red;
+  background-color: #ffa;
+  border: 1px solid;
+  padding: 3px;
 }
 
-.ulClass{
-
-    list-style-type: none;
-    
+.ulClass {
+  list-style-type: none;
 }
-
