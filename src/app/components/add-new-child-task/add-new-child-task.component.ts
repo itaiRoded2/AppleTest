@@ -1,11 +1,12 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { Category } from './../categories/models/Category';
 import { CategoriesService } from '../categories/services/categories.service';
 
 @Component({
   selector: 'add-new-child-task',
   templateUrl: './add-new-child-task.component.html',
-  styleUrls: ['./add-new-child-task.component.css']
+  styleUrls: ['./add-new-child-task.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AddNewChildTaskComponent implements OnInit {
 
@@ -50,10 +51,7 @@ export class AddNewChildTaskComponent implements OnInit {
 
       let newCategoryWithChildTask: Category = this.categoriesService.addNewTaskForCategory(this.selectedCategory, newTaskTitle);
       this.shouldShowNewTaskForm = false;
-      this.shouldShowAddTaskBtn = true;
-
-      debugger;
-
+      this.shouldShowAddTaskBtn = true;      
 
       this.categoriesService.setSelectedCategory(newCategoryWithChildTask);
 

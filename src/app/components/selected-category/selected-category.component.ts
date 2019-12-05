@@ -23,7 +23,6 @@ export class SelectedCategoryComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    debugger;
     this.route.params.subscribe((params: Params) => {
 
       this.setCategoryById();
@@ -33,7 +32,6 @@ export class SelectedCategoryComponent implements OnInit, OnDestroy {
     //When adding a new task to newly created category 
     this.categoriesService.selectedCategoryAsObservable.subscribe((selectedCategory: Category) => {
       
-      debugger;
       if(selectedCategory) {   
 
           this.selectedCatName = this.selectedCat.name;

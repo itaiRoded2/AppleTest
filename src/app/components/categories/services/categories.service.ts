@@ -120,8 +120,7 @@ export class CategoriesService {
   }
 
   addNewTaskForCategory(selectedCategory: Category, newTaskTitle: string) : Category {
-
-    debugger;
+    
     let newCategoryChildTaskId: number = 1;
 
     if(selectedCategory && selectedCategory.children && selectedCategory.children.length)  {
