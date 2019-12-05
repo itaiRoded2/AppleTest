@@ -2,10 +2,7 @@
     cursor: pointer;
 }
 
-.wrapper{
-    /* float: right;
-    margin-top: 160%;
-    margin-right: 10px; */
+.wrapper{    
 
     position:absolute;
     bottom:0;

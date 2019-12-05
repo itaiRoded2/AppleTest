@@ -1,18 +1,18 @@
 .leftSide {
     width: 15%; 
-    height: 200px;    
+    height: 400px;    
     float:left;
     border:1px solid black;
     position: relative !important;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .rightSide {
     width: 80%; 
-    height: 200px;
+    height: 400px;
     float:right;    
     border:1px solid black;
     margin-right: 60px;
     position: relative !important;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
