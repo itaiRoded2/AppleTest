@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Category } from './../categories/models/Category';
 import { CategoriesService } from '../categories/services/categories.service';
 
@@ -11,16 +11,18 @@ export class AddNewChildTaskComponent implements OnInit {
 
   shouldShowAddTaskBtn = false;
   shouldShowNewTaskForm: boolean = false;
-  selectedCategory: Category = null;  
+  selectedCategory: Category = null;
 
-  constructor(private categoriesService: CategoriesService) { }
+  constructor(
+    private categoriesService: CategoriesService
+  ) { }
 
   ngOnInit() {
-    
+
     //set selected category on every route change 
     this.categoriesService.selectedCategoryAsObservable.subscribe((selectedCategory: Category) => {
-      
-      if(selectedCategory) {
+
+      if (selectedCategory) {
 
         this.selectedCategory = selectedCategory;
         this.shouldShowAddTaskBtn = true;
@@ -38,19 +40,24 @@ export class AddNewChildTaskComponent implements OnInit {
 
   }
 
-  addNewTask(newTaskTitle: string) {         
+  addNewTask(newTaskTitle: string) {
 
-    if(newTaskTitle == "") {
+    if (newTaskTitle == "") {
 
       alert("Please enter a task title!");
 
     } else {
 
-      this.categoriesService.addNewTaskForCategory(this.selectedCategory,newTaskTitle);
+      let newCategoryWithChildTask: Category = this.categoriesService.addNewTaskForCategory(this.selectedCategory, newTaskTitle);
       this.shouldShowNewTaskForm = false;
       this.shouldShowAddTaskBtn = true;
-      
-    }    
+
+      debugger;
+
+
+      this.categoriesService.setSelectedCategory(newCategoryWithChildTask);
+
+    }
 
   }
 

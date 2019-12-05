@@ -23,15 +23,29 @@ export class SelectedCategoryComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    debugger;
     this.route.params.subscribe((params: Params) => {
 
-      this.setCategory();
+      this.setCategoryById();
+
+    });
+
+    //When adding a new task to newly created category 
+    this.categoriesService.selectedCategoryAsObservable.subscribe((selectedCategory: Category) => {
+      
+      debugger;
+      if(selectedCategory) {   
+
+          this.selectedCatName = this.selectedCat.name;
+          this.children = this.selectedCat.children;
+
+      }
 
     });
 
   }
 
-  setCategory(): any {
+  setCategoryById(): any {
 
     const idFromRoute = +this.route.snapshot.paramMap.get('id');
 

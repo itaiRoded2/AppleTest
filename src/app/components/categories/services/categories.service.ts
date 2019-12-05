@@ -119,12 +119,25 @@ export class CategoriesService {
 
   }
 
-  addNewTaskForCategory(selectedCategory: Category, newTaskTitle: string) {
+  addNewTaskForCategory(selectedCategory: Category, newTaskTitle: string) : Category {
 
-    let newCategoryChildTaskId: number = selectedCategory.children.length + 1;
+    debugger;
+    let newCategoryChildTaskId: number = 1;
 
+    if(selectedCategory && selectedCategory.children && selectedCategory.children.length)  {
+
+      newCategoryChildTaskId = selectedCategory.children.length + 1;
+    
+    } else {
+      
+      selectedCategory.children = new Array<CategoryChild>();
+
+    }
+     
     let newCategoryChildTask: CategoryChild = new CategoryChild(newCategoryChildTaskId, newTaskTitle, false);
 
     selectedCategory.children.push(newCategoryChildTask);
+
+    return selectedCategory;
   }
 }
