@@ -102,13 +102,15 @@ export class CategoriesService {
 
   }
 
-  addNewCategoryWithNoChildren(categoryName: string): any {
+  addNewCategoryWithNoChildren(categoryName: string): Category {
 
     let newCategoryId: number = this.categories.length + 1;
 
     let newCategory = new Category(newCategoryId, categoryName, null);
 
     this.categories.push(newCategory);
+
+    return newCategory;
 
   }
 
@@ -138,5 +140,7 @@ export class CategoriesService {
     selectedCategory.children.push(newCategoryChildTask);
 
     return selectedCategory;
+
   }
+
 }

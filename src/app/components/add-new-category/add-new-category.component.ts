@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CategoriesService } from '../categories/services/categories.service';
+import { Category } from '../categories/models/Category';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'add-new-category',
@@ -11,10 +13,14 @@ export class AddNewCategoryComponent implements OnInit {
 
   showAddCatForm: boolean = false;
 
-  constructor(private categoriesService: CategoriesService) { }
+  constructor(
+    private categoriesService: CategoriesService,
+    private router: Router) { }
 
   ngOnInit() {
+    
   }
+    
 
   showAddNewCategoryForm() {
 
@@ -30,10 +36,12 @@ export class AddNewCategoryComponent implements OnInit {
 
     } else {
 
-      this.categoriesService.addNewCategoryWithNoChildren(categoryName);
+      let newlyAddedCategory: Category = this.categoriesService.addNewCategoryWithNoChildren(categoryName);
 
       this.showAddCatForm = false;
 
+      this.router.navigateByUrl('/detail/' + newlyAddedCategory.id);
+      
     }
 
   }

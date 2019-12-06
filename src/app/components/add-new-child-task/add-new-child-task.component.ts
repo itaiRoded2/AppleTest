@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Category } from './../categories/models/Category';
 import { CategoriesService } from '../categories/services/categories.service';
 
@@ -12,6 +12,10 @@ export class AddNewChildTaskComponent implements OnInit {
 
   shouldShowAddTaskBtn = false;
   shouldShowNewTaskForm: boolean = false;
+  
+  @Output() onNewTaskSubmit: EventEmitter<Category> = new EventEmitter<Category>();
+  
+  @Input()
   selectedCategory: Category = null;
 
   constructor(
@@ -20,19 +24,17 @@ export class AddNewChildTaskComponent implements OnInit {
 
   ngOnInit() {
 
-    //set selected category on every route change 
-    this.categoriesService.selectedCategoryAsObservable.subscribe((selectedCategory: Category) => {
-
-      if (selectedCategory) {
-
-        this.selectedCategory = selectedCategory;
-        this.shouldShowAddTaskBtn = true;
-
-      }
-
-    });
-
   }
+
+  ngOnChanges(inputPropertiesChanges: SimpleChanges): void {
+
+    if (inputPropertiesChanges && inputPropertiesChanges.selectedCategory && inputPropertiesChanges.selectedCategory.currentValue != null) {
+
+      this.shouldShowAddTaskBtn = true;
+
+    }
+
+}
 
   showNewTaskForm() {
 
@@ -49,11 +51,11 @@ export class AddNewChildTaskComponent implements OnInit {
 
     } else {
 
-      let newCategoryWithChildTask: Category = this.categoriesService.addNewTaskForCategory(this.selectedCategory, newTaskTitle);
+      let newCategoryWithNewTaskChild: Category = this.categoriesService.addNewTaskForCategory(this.selectedCategory, newTaskTitle);
       this.shouldShowNewTaskForm = false;
       this.shouldShowAddTaskBtn = true;      
 
-      this.categoriesService.setSelectedCategory(newCategoryWithChildTask);
+      this.onNewTaskSubmit.emit(newCategoryWithNewTaskChild);
 
     }
 

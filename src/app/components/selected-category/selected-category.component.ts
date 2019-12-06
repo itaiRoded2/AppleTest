@@ -29,17 +29,20 @@ export class SelectedCategoryComponent implements OnInit, OnDestroy {
 
     });
 
-    //When adding a new task to newly created category 
-    this.categoriesService.selectedCategoryAsObservable.subscribe((selectedCategory: Category) => {
-      
-      if(selectedCategory) {   
+  }
 
-          this.selectedCatName = this.selectedCat.name;
-          this.children = this.selectedCat.children;
+  setViewModelProps(category: Category) {
 
-      }
+    if (category) {
 
-    });
+      this.selectedCatName = this.selectedCat.name;
+      this.children = this.selectedCat.children;
+
+    } else {
+
+      this.selectedCatName = "No category matched for this id";
+
+    }
 
   }
 
@@ -51,29 +54,20 @@ export class SelectedCategoryComponent implements OnInit, OnDestroy {
 
     this.selectedCat = this.categoriesService.getCatById(this.id);
 
-    if (this.selectedCat) {
+    this.setViewModelProps(this.selectedCat);
 
-      this.selectedCatName = this.selectedCat.name;
-      this.children = this.selectedCat.children;
-
-      this.categoriesService.setSelectedCategory(this.selectedCat);
-      
-    } else {
-
-      this.selectedCatName = "No category matched for this id";
-
-    }
+    this.categoriesService.setSelectedCategory(this.selectedCat);
   }
 
 
   toggleChildCat(childCat: CategoryChild): void {
 
-    
     this.categoriesService.toggleCatChildIsDeleted(this.selectedCat, childCat.id);
+
   }
 
   deleteChildCat(childCat: CategoryChild): void {
-    
+
     this.categoriesService.deleteChildCategory(this.selectedCat, childCat);
 
   }
@@ -96,16 +90,22 @@ export class SelectedCategoryComponent implements OnInit, OnDestroy {
 
     let className = "";
 
-    if(childCat.isDeleted) {
+    if (childCat.isDeleted) {
 
       className = "shouldBeCrossed";
     }
 
     return className;
+
+  }
+
+  newTaskSubmitted(newCategoryWithAddedTask: Category) {
+
+    this.setViewModelProps(newCategoryWithAddedTask);
+
   }
 
   ngOnDestroy(): void {
-
 
   }
 

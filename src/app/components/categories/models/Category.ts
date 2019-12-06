@@ -5,12 +5,22 @@ export class Category {
     id: number;
     name: string;
     children: Array<CategoryChild>;
+    isSelected:  boolean = false;
 
-    constructor(id: number, name: string, CategoryChildren: Array<CategoryChild>) {
+    constructor(id: number, name: string, CategoryChildren?: Array<CategoryChild>) {
         
         this.id = id;
         this.name = name;
-        this.children = CategoryChildren;
+        
+        if(CategoryChildren) {
+
+            this.children = CategoryChildren;
+
+        } else {
+
+            this.children = Array<CategoryChild>();
+
+        }
         
     }
 }

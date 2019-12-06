@@ -2,7 +2,9 @@
 <ul *ngFor="let cat of categories" class="ulClass">
 
   <li>
-      <a [routerLink]="['/detail',cat.id]" class="{{shouldAddHighlightedClass(cat)}}">
+      <a [routerLink]="['/detail',cat.id]" 
+         [ngClass]="(cat.isSelected)?'highlightMe':''"      
+      >
          {{cat.name}}
       </a>
 
