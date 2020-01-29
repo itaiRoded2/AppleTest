@@ -33,6 +33,7 @@ export class SelectedCategoryComponent implements OnInit, OnDestroy {
 
   setViewModelProps(category: Category) {
 
+    debugger;
     if (category) {
 
       this.selectedCatName = this.selectedCat.name;
@@ -62,7 +63,7 @@ export class SelectedCategoryComponent implements OnInit, OnDestroy {
 
   toggleChildCat(childCat: CategoryChild): void {
 
-    this.categoriesService.toggleCatChildIsDeleted(this.selectedCat, childCat.id);
+    this.categoriesService.toggleCatChildIsDeleted(this.selectedCat, childCat.id );
 
   }
 
@@ -99,11 +100,11 @@ export class SelectedCategoryComponent implements OnInit, OnDestroy {
 
   }
 
-  newTaskSubmitted(newCategoryWithAddedTask: Category) {
+  // newTaskSubmitted(newCategoryWithAddedTask: Category) {
 
-    this.setViewModelProps(newCategoryWithAddedTask);
+  //   this.setViewModelProps(newCategoryWithAddedTask);
 
-  }
+  // }
 
   ngOnDestroy(): void {
 

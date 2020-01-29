@@ -21,7 +21,7 @@
               class="curserMe" />
           </td>
 
-          <td>
+        <td>
             <span class="{{checkedIfCrossed(childCat)}}">
               <span>{{childCat.title}} </span>
             </span>
@@ -41,4 +41,5 @@
 
 </div>
 
-<add-new-child-task [selectedCategory]="selectedCat" (onNewTaskSubmit)="newTaskSubmitted($event)"></add-new-child-task>
+<!-- (onNewTaskSubmit)="newTaskSubmitted($event)" -->
+<add-new-child-task [selectedCategory]="selectedCat" ></add-new-child-task>

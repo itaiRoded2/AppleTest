@@ -13,7 +13,7 @@ export class AddNewChildTaskComponent implements OnInit {
   shouldShowAddTaskBtn = false;
   shouldShowNewTaskForm: boolean = false;
   
-  @Output() onNewTaskSubmit: EventEmitter<Category> = new EventEmitter<Category>();
+  // @Output() onNewTaskSubmit: EventEmitter<Category> = new EventEmitter<Category>();
   
   @Input()
   selectedCategory: Category = null;
@@ -55,7 +55,8 @@ export class AddNewChildTaskComponent implements OnInit {
       this.shouldShowNewTaskForm = false;
       this.shouldShowAddTaskBtn = true;      
 
-      this.onNewTaskSubmit.emit(newCategoryWithNewTaskChild);
+      // debugger;
+      // this.onNewTaskSubmit.emit(newCategoryWithNewTaskChild);
 
     }
 

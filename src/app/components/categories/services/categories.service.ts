@@ -129,11 +129,14 @@ export class CategoriesService {
 
       newCategoryChildTaskId = selectedCategory.children.length + 1;
     
-    } else {
-      
-      selectedCategory.children = new Array<CategoryChild>();
-
     }
+    
+    //ROOT OF ISSUE
+    // else {
+      
+    //   selectedCategory.children = new Array<CategoryChild>();
+
+    // }
      
     let newCategoryChildTask: CategoryChild = new CategoryChild(newCategoryChildTaskId, newTaskTitle, false);
 
