@@ -1,3 +1,6 @@
+.selectedCatName{
+  padding-left: 15px;
+}
 .shouldBeCrossed {
   text-decoration: line-through;
 }

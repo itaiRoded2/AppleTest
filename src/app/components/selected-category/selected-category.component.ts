@@ -98,13 +98,7 @@ export class SelectedCategoryComponent implements OnInit, OnDestroy {
 
     return className;
 
-  }
-
-  // newTaskSubmitted(newCategoryWithAddedTask: Category) {
-
-  //   this.setViewModelProps(newCategoryWithAddedTask);
-
-  // }
+  }  
 
   ngOnDestroy(): void {
 
